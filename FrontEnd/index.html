@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <form action="">
+        <div class="radioContainer">
+          <div class="radioContainer">
+            <label for="radioText">از طریق متن</label>
+            <input
+              id="radioText"
+              type="radio"
+              name="chart"
+              value="radioText"
+              checked
+            />
+          </div>
+          <div class="radioContainer">
+            <label for="radioFile">از طریق فایل</label>
+            <input id="radioFile" type="radio" name="chart" value="radioFile" />
+          </div>
+        </div>
+        <input
+          type="number"
+          min="10"
+          placeholder="ثانیه کل نمودار"
+          class="input-S"
+        />
+        <input
+          type="number"
+          min="5"
+          placeholder="ثانیه برای میانگین گیری"
+          class="input-S"
+        />
+        <input type="file" id="selector" accept="text/plain" class="input-S" />
+        <label class="file-btn none" for="selector">انتخاب فایل</label>
+        <div class="radioContainer">
+          <label for="true-avg">فعال بودن جدول داده های کل</label>
+          <input id="true-avg" type="checkbox" />
+        </div>
+        <div style="display: flex; justify-content: space-between; gap: 12px;">
+          <button>ثبت</button>
+          <button id="reset">reset</button>
+        </div>
+      </form>
+    </div>
+    <div class="canvacon">
+      <canvas id="myChart3" class="chartBoxHiden" style="width: 100% !important"></canvas>
+    </div>
+    <script src="./node_modules/chart.js/dist/chart.umd.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
