@@ -1,12 +1,12 @@
 # chart js
 
-#### npm backend
+#### npm Frontend
 ```
 cd .\FrontEnd\
 npm i
 ```
 ---
-#### npm frontend
+#### npm Backend
 ```
 cd ..\
 cd .\BackEnd\
