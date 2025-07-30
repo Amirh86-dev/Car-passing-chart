@@ -12,7 +12,7 @@ cd ..\
 cd .\BackEnd\
 npm i
 ```
-#### npm inpm global
+#### npm install global
 ```
 npm install -g nodemon
 ```

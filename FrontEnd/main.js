@@ -19,7 +19,7 @@ let takeData = [];
 let takeDataSecendry = "";
 let vals;
 let iM = 0;
-let minAvrage = 0;
+let maxAvrage = 0;
 
 
 console.log(input);
@@ -89,7 +89,7 @@ const chartCreator = (x, y) => {
   });
 };
 
-//submit or btn create chart
+//? submit or btn create chart
 const submitbtn = async () => {
   let isCheck = document.querySelector('input[type="radio"]:checked');
 
@@ -116,15 +116,15 @@ const submitbtn = async () => {
     }else {
       if (takeData.length <= 0) {
         await takeAllData(input[2].value,input[3].value)
-        minAvrage = takeData[0].avrage        
+        maxAvrage = takeData[0].avrage        
         chartCreator(takeData[0].xValues, takeData[0].yValues);
         input[2].disabled = true;
       }else {
         await takeAllData(takeData[0].allValues,input[3].value);           
-        minAvrage = minAvrage < takeData[iM].avrage ? minAvrage : takeData[iM].avrage
+        maxAvrage = maxAvrage > takeData[iM].avrage ? maxAvrage : takeData[iM].avrage
         chartCreatorM(takeData);
       }
-      console.log(minAvrage);
+      console.log(maxAvrage);
       iM++;
       
     }
@@ -346,15 +346,15 @@ const chartCreatorM = (xy) => {
     }
   }
 
-  let findMinAvg = xy.findIndex(item => minAvrage == item.avrage)
+  let findMaxAvg = xy.findIndex(item => maxAvrage == item.avrage)
   
-  artt = xy.map(item => {
-    if (item.yValues.length == takeData[findMinAvg].yValues.length) {
+  let artt = xy.map(item => {
+    if (item.yValues.length == takeData[findMaxAvg].yValues.length) {
       
     }else{
       let yvalsi =item.yValues.length;
-      for (let index = 0; index < takeData[findMinAvg].yValues.length - yvalsi; index++) {        
-        item.yValues.unshift(0)    
+      for (let index = 0; index < yvalsi - takeData[findMaxAvg].yValues.length; index++) {        
+        item.yValues.shift()    
       }
     }
     
@@ -392,7 +392,7 @@ const chartCreatorM = (xy) => {
   myChart3 = new Chart(canvas, {
     type: "line",
     data: {
-      labels: takeData[findMinAvg].xValues,
+      labels: takeData[findMaxAvg].xValues,
       datasets: chartBar.map((item) => item),
     },
     options: {
